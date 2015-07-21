@@ -143,6 +143,8 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Rutorika\Sortable\SortableServiceProvider::class,
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         App\Services\Html\HtmlServiceProvider::class,
 
         /*

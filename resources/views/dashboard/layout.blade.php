@@ -8,6 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>Dashboard</title>
 
@@ -124,6 +125,13 @@
             min-height: 400px;
         }
 
+        /* Sortable */
+        .sortable-handle {
+            cursor: move;
+            width: 40px;
+            color: #ddd;
+        }
+
     </style>
 </head>
 
@@ -154,13 +162,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="{{ route('dashboard.collection.index') }}">Poem Collections</a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">Nav item</a></li>
-                <li><a href="">Nav item again</a></li>
+                <li><a href="{{ route('dashboard.collection.index') }}">Poem Collections</a></li>
+                <li><a href="{{ route('dashboard.page.index') }}">Pages</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -172,6 +175,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/vendor/ace-1.2.0/src/ace.js"></script>
+<script src="/vendor/jquery-ui-1.11.4/jquery-ui.js"></script>
 <script src="/js/app.js"></script>
 </body>
 </html>

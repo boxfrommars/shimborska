@@ -17,5 +17,8 @@ Route::get('/', function () {
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () {
     Route::resource('collection', 'CollectionController');
     Route::resource('collection.poem', 'PoemController');
+    Route::resource('page', 'PageController');
 });
+
+Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
 
