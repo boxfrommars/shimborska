@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     editor.getSession().setValue($textarea.val());
 
-    editor.setTheme("ace/theme/monokai");
+    //editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/html");
 
     editor.getSession().on('change', function(){

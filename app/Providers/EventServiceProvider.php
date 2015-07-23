@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Entities\Collection;
 use App\Entities\Page;
+use App\Entities\Poem;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -35,6 +36,13 @@ class EventServiceProvider extends ServiceProvider
             $page = new Page();
             $page->title = $collection->title;
             $collection->page()->save($page);
+        });
+
+        Poem::created(function ($poem) {
+            /** @var Collection $poem */
+            $page = new Page();
+            $page->title = $poem->title;
+            $poem->page()->save($page);
         });
     }
 }

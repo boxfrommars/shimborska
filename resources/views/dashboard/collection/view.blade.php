@@ -9,7 +9,9 @@
         <div class="col-md-9 col-sm-8">
             {!! Form::model($collection, ['route' => $collection->id ? ['dashboard.collection.update', $collection] : ['dashboard.collection.store'], 'method' => $collection->id ? 'PATCH' : 'POST', 'class' => 'form-horizontal']) !!}
             {!! Form::textField('Title', 'title') !!}
-            {!! Form::textareaField('Description', 'description') !!}
+            {!! Form::codeField('Content', 'content') !!}
+            {!! Form::codeField('Notes', 'notes') !!}
+            {!! Form::codeField('Images', 'images') !!}
             {!! Form::submitField() !!}
             {!! Form::close() !!}
         </div>

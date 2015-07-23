@@ -18,7 +18,7 @@ class CollectionController extends Controller
 {
     protected $rules = [
         'title' => 'required',
-        'description' => 'required',
+        'content' => 'required',
     ];
 
     public function index()

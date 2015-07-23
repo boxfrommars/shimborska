@@ -8,8 +8,9 @@
     </ol>
     {!! Form::model($poem, ['route' => $poem->id ? ['dashboard.collection.poem.update', $collection, $poem] : ['dashboard.collection.poem.store', $collection], 'method' => $poem->id ? 'PATCH' : 'POST', 'class' => 'form-horizontal']) !!}
     {!! Form::textField('Title', 'title') !!}
-    {!! Form::codeField('Text', 'text') !!}
+    {!! Form::codeField('Content', 'content') !!}
     {!! Form::codeField('Notes', 'notes') !!}
+    {!! Form::codeField('Images', 'images') !!}
     {!! Form::submitField() !!}
     {!! Form::close() !!}
 @endsection

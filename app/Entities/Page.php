@@ -40,7 +40,7 @@ class Page extends Model implements SluggableInterface
     use SortableTrait;
     use SluggableTrait;
 
-    protected $fillable = ['title', 'description', 'keywords'];
+    protected $fillable = ['title', 'description', 'keywords', 'slug'];
 
     protected $sluggable = [
         'build_from' => 'title',

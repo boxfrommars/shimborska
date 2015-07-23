@@ -13,6 +13,7 @@ class PoemController extends Controller
 {
     protected $rules = [
         'title' => 'required',
+        'content' => 'required',
     ];
 
     public function index(Collection $collection)

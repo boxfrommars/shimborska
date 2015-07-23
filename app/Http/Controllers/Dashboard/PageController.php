@@ -19,6 +19,7 @@ class PageController extends Controller
     protected $rules = [
         'title' => 'required',
         'description' => 'required',
+        'slug' => 'alpha_dash|unique:pages,slug'
     ];
 
     public function index()
@@ -32,15 +33,20 @@ class PageController extends Controller
         $page = new Page($request->all());
         $page->save();
 
-        return redirect()->route('dashboard.page.index');
+        return redirect()->route('dashboard.page.show', $page);
     }
 
-    public function update(Model $page, Request $request)
+    public function update(Page $page, Request $request)
     {
-        $this->validate($request, $this->rules);
+        $rules = $this->rules;
+
+        $rules['slug'] .= ',' . $page->id;
+        \Log::debug($rules);
+
+        $this->validate($request, $rules);
         $page->update($request->all());
 
-        return redirect()->route('dashboard.page.index');
+        return redirect()->route('dashboard.page.show', $page);
     }
 
     public function destroy(Model $page)

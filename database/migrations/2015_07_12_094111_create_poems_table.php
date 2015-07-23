@@ -15,8 +15,9 @@ class CreatePoemsTable extends Migration
         Schema::create('poems', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('text');
+            $table->text('content');
             $table->text('notes');
+            $table->text('images');
             $table->integer('collection_id')->unsigned();
             $table->timestamps();
 

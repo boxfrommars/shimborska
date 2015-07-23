@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Poem extends Model
 {
-    protected $fillable = ['title', 'text', 'notes'];
+    protected $fillable = ['title', 'content', 'notes', 'images'];
 
     public function collection()
     {

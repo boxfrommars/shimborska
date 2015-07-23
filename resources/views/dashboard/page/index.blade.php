@@ -13,6 +13,7 @@
                 <tr>
                     <th></th>
                     <th>Title</th>
+                    <th>Slug</th>
                     <th>Type</th>
                     <th></th>
                 </tr>
@@ -21,7 +22,8 @@
                 @foreach($pages as $page)
                     <tr data-itemid="{{ $page->id }}">
                         <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
-                        <td style="width: 1%; white-space: nowrap;"><a href="">{{ $page->title }}</a></td>
+                        <td><a href="">{{ $page->title }}</a></td>
+                        <td>{{ $page->slug }}</td>
                         <td>{{ $page->pageable_name }}</td>
                         <td class="grid-actions text-nowrap">
                             <a href="{{ route('dashboard.page.edit', $page) }}"><i class="glyphicon glyphicon-pencil"></i></a>

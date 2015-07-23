@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Collection extends Model
 {
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'content', 'notes', 'images'];
 
     public function poems()
     {

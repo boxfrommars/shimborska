@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Entities\Collection;
+use App\Entities\Page;
 use App\Entities\Poem;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -31,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $router->model('collection', Collection::class);
         $router->model('poem', Poem::class);
+        $router->model('page', Page::class);
     }
 
     /**
