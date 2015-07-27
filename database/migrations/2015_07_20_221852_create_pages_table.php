@@ -18,6 +18,9 @@ class CreatePagesTable extends Migration
             $table->string('slug');
             $table->text('keywords');
             $table->text('description');
+            $table->boolean('is_visible')->default(true);
+
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->integer('position');
 
             $table->morphs('pageable');

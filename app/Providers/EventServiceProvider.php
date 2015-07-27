@@ -39,9 +39,13 @@ class EventServiceProvider extends ServiceProvider
         });
 
         Poem::created(function ($poem) {
-            /** @var Collection $poem */
+            /** @var Poem $poem */
             $page = new Page();
             $page->title = $poem->title;
+            /** @var Collection $collection */
+            $collection = $poem->collection;
+            $parentPage = $collection->page;
+            $page->parent()->associate($parentPage);
             $poem->page()->save($page);
         });
     }

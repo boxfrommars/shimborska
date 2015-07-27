@@ -22,8 +22,8 @@
                 @foreach($pages as $page)
                     <tr data-itemid="{{ $page->id }}">
                         <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
-                        <td><a href="">{{ $page->title }}</a></td>
-                        <td>{{ $page->slug }}</td>
+                        <td><a href="{{ route('dashboard.page.edit', $page) }}">{{ $page->title }}</a></td>
+                        <td><code>{{ $page->url }}</code></td>
                         <td>{{ $page->pageable_name }}</td>
                         <td class="grid-actions text-nowrap">
                             <a href="{{ route('dashboard.page.edit', $page) }}"><i class="glyphicon glyphicon-pencil"></i></a>

@@ -82,7 +82,4 @@ $(document).ready(function(){
       cursor: "move"
     });
   }
-  //$('.sortable td').each(function(){
-  //  $(this).css('width', $(this).width() +'px');
-  //});
 });

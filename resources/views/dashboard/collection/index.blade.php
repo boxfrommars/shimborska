@@ -20,7 +20,7 @@
                 @foreach($collections as $collection)
                     <tr>
                         <td><a href="{{ route('dashboard.collection.poem.index', $collection) }}">{{ $collection->title }}</a></td>
-                        <td>Page {{ $collection->page->title }}</td>
+                        <td></td>
                         <td class="grid-actions text-nowrap">
                             <a href="{{ route('dashboard.collection.edit', $collection) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                             {!! delete_form(route('dashboard.collection.destroy', $collection)) !!}

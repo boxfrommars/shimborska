@@ -24,7 +24,7 @@ class PageController extends Controller
 
     public function index()
     {
-        return view('dashboard.page.index', ['pages' => Page::sorted()->get()]);
+        return view('dashboard.page.index', ['pages' => Page::sorted()->with('parent')->get()]);
     }
 
     public function store(Request $request)
@@ -41,7 +41,6 @@ class PageController extends Controller
         $rules = $this->rules;
 
         $rules['slug'] .= ',' . $page->id;
-        \Log::debug($rules);
 
         $this->validate($request, $rules);
         $page->update($request->all());

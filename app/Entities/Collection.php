@@ -18,7 +18,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Collection whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Collection whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Collection whereUpdatedAt($value)
- * @property-read Page $page 
+ * @property-read Page $page
+ * @property string $content 
+ * @property string $notes 
+ * @property string $images 
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Collection whereContent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Collection whereNotes($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Collection whereImages($value)
  */
 class Collection extends Model
 {

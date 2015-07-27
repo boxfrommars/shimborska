@@ -11,7 +11,7 @@
         "laravelcollective/html": "5.1.*",
         "barryvdh/laravel-debugbar": "^2.0",
         "doctrine/dbal": "^2.5",
-        "rutorika/sortable": "^2.2",
+        "rutorika/sortable": "dev-master",
         "cviebrock/eloquent-sluggable": "^3.0"
     },
     "require-dev": {

@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'main', 'uses' => 'MainController@main']);
+
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () {
     Route::resource('collection', 'CollectionController');
     Route::resource('collection.poem', 'PoemController');
@@ -21,4 +20,8 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () 
 });
 
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
+
+
+Route::get('/{collectionSlug}/{poemSlug}', ['as' => 'poem', 'uses' => 'MainController@poem']);
+Route::get('/{collectionSlug}', ['as' => 'collection', 'uses' => 'MainController@collection']);
 

@@ -23,7 +23,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Poem whereCollectionId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Poem whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Entities\Poem whereUpdatedAt($value)
- * @property-read Page $page 
+ * @property-read Page $page
+ * @property string $content 
+ * @property string $images 
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Poem whereContent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Poem whereImages($value)
  */
 class Poem extends Model
 {
