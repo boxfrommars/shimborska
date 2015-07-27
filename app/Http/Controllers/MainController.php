@@ -33,14 +33,16 @@ class MainController extends Controller
 
     protected function getPage($slug, $parentSlug = null)
     {
+        \Log::debug($slug);
+        \Log::debug($parentSlug);
         /** @var Page $page */
-        $page = Page::whereSlug($slug)->first();
+        $page = Page::whereSlug($slug)->whereNotNull('parent_id')->first();
         if (!$page || !$page->is_visible) {
             abort(404);
         }
 
         if ($parentSlug !== null) {
-            $parentPage = Page::whereSlug($parentSlug)->first();
+            $parentPage = Page::whereSlug($parentSlug)->whereNull('parent_id')->first();
 
             if (!$parentPage || $page->parent_id !== $parentPage->id) {
                 abort(404);

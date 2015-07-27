@@ -1,0 +1,28 @@
+{
+  "name": "shimborska",
+  "version": "0.0.1",
+  "homepage": "https://github.com/boxfrommars/shimborska",
+  "authors": [
+    "Dmitry Groza <boxfrommars@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "css-modal": "~1.4.1"
+  },
+  "overrides": {
+    "css-modal": {
+      "main": [
+        "build/modal.css",
+        "modal.js"
+      ]
+    }
+  }
+}

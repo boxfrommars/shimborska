@@ -1,4 +1,6 @@
 var elixir = require('laravel-elixir');
+require('laravel-elixir-wiredep');
+require('laravel-elixir-useref');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,7 +14,15 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix
+      .wiredep({
+        baseDir: 'resources/views/frontend',
+        src: 'layout.blade.php'
+      })
+      .useref({
+        baseDir: 'resources/views/frontend',
+        src: 'layout.blade.php'
+      });
 });
 
 //elixir(function(mix) {

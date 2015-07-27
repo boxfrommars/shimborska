@@ -3516,7 +3516,7 @@
                         ';
                     break;
 
-                // @TODO above
+                // different
                 case 'ballad':
                     $poem['title'] = 'Баллада';
                     $poem['content'] = '
@@ -4037,7 +4037,7 @@
                     ';
                     break;
 
-
+                // @TODO above
                 case 'moment':
                     $poem['title'] = 'Мгновение';
                     $poem['content'] = '
