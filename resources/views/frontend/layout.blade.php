@@ -46,7 +46,7 @@
             <ul id="pager" class="cf">
                 <li class="first"><a href="/">Обложка</a><span class="shortkey">(ctrl + ↓)</span></li>
 
-                <?php $pageNumber = $pager->firstPagerPage; ?>
+                <?php $pageNumber = $pagerFirstPageNumber; ?>
                 @foreach ($pager as $pagerPage)
                     @if ($pagerPage->id === $page->id)
                         <li id="center-bottom-nav"><span>{{ $pageNumber }}</span></li>

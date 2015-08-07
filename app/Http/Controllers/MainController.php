@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Page;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as IlluminateCollection;
 
 class MainController extends Controller
@@ -13,57 +14,63 @@ class MainController extends Controller
             'title' => 'Главная'
         ]);
 
-        $pager = $this->getPager();
-        return view('frontend.main', compact('page', 'pager'));
+        return $this->view('frontend.main', $page);
     }
 
     public function poem($collectionSlug, $slug)
     {
-        $page = $this->getPage($slug, $collectionSlug);
-        $pager = $this->getPager($page);
-        return view('frontend.poem', compact('page', 'pager'));
+        $page = Page::whereSlug($slug)->whereNotNull('parent_id')->first();
+        $collectionPage = Page::whereSlug($collectionSlug)->whereNull('parent_id')->first();
+
+        if (!$page || !$page->is_visible || !$collectionPage) {
+            abort(404);
+        }
+
+        return $this->view('frontend.poem', $page);
     }
 
     public function collection($slug)
     {
-        $page = $this->getPage($slug)->load('childs.pageable');
-        $pager = $this->getPager($page);
-        return view('frontend.collection', compact('page', 'pager'));
-    }
-
-    protected function getPage($slug, $parentSlug = null)
-    {
-        \Log::debug($slug);
-        \Log::debug($parentSlug);
         /** @var Page $page */
-        $page = Page::whereSlug($slug)->whereNotNull('parent_id')->first();
+        $page = Page::whereSlug($slug)->whereNull('parent_id')->first();
         if (!$page || !$page->is_visible) {
             abort(404);
         }
 
-        if ($parentSlug !== null) {
-            $parentPage = Page::whereSlug($parentSlug)->whereNull('parent_id')->first();
+        $page->load('childs.pageable');
 
-            if (!$parentPage || $page->parent_id !== $parentPage->id) {
-                abort(404);
-            }
-        }
+        return $this->view('frontend.collection', $page);
+    }
 
-        return $page;
+
+    /**
+     * @param String $viewName
+     * @param Page $page
+     * @return \Illuminate\View\View
+     */
+    protected function view($viewName, $page)
+    {
+        $pager = $this->getPager($page);
+        $pagerFirstPageNumber = $pager->first()->previous()->visible()->count() + 1;
+
+        return view($viewName, compact('page', 'pager', 'pagerFirstPageNumber'));
     }
 
     /**
      * @param Page $pagerCurrentPage
      * @return IlluminateCollection
      */
-    protected function getPager($pagerCurrentPage = null)
+    protected function getPager($pagerCurrentPage)
     {
-        $pagerCurrentPage = $pagerCurrentPage ?: Page::sorted()->visible()->first();
+        $pagerCurrentPage = $pagerCurrentPage->id ? $pagerCurrentPage : Page::sorted()->visible()->first();
 
         $pager = new IlluminateCollection();
         $pager->push($pagerCurrentPage); // e.g. page 6
 
+
+        /** @var Collection $previousPages */
         $previousPages = $pagerCurrentPage->previous(4)->visible()->with(['pageable', 'parent'])->get(); // 5 4 3 2
+        /** @var Collection $nextPages */
         $nextPages = $pagerCurrentPage->next(4)->visible()->with(['pageable', 'parent'])->get(); // 7 8 9 10
 
         do {
@@ -78,10 +85,6 @@ class MainController extends Controller
             }
         } while ($pager->count() < 5 && ($previousPages->count() > 0 || $nextPages->count() > 0));
 
-        $firstPagerPage = $pager->first();
-
-        $firstPagerPageNumber = $firstPagerPage->previous()->visible()->count() + 1;
-        $pager->firstPagerPage = $firstPagerPageNumber;
 
         return $pager;
     }

@@ -35,10 +35,14 @@ use Rutorika\Sortable\SortableTrait;
  * @method static Builder|Page whereUpdatedAt($value)
  * @method static Builder|Page whereParentId($value)
  * @method static Builder|Page sorted()
- * @property-read Page $parent 
+ * @property-read Page $parent
  * @property-read mixed $url
  * @property-read \Illuminate\Database\Eloquent\Model $pageable
  * @property-read mixed $pageable_name
+ * @property boolean $is_visible 
+ * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $childs 
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Page whereIsVisible($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Entities\Page visible()
  */
 class Page extends Model implements SluggableInterface
 {
