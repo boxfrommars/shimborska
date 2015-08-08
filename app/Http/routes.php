@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as' => 'main', 'uses' => 'MainController@main']);
+Route::get('about', ['as' => 'about', 'uses' => 'MainController@about']);
 
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () {
     Route::resource('collection', 'CollectionController');

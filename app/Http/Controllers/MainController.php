@@ -11,10 +11,20 @@ class MainController extends Controller
     public function main()
     {
         $page = new Page([
-            'title' => 'Главная'
+            'title' => 'Главная',
+            'slug' => ''
         ]);
 
         return $this->view('frontend.main', $page);
+    }
+    public function about()
+    {
+        $page = new Page([
+            'title' => 'О проекте',
+            'slug' => 'about'
+        ]);
+
+        return $this->view('frontend.about', $page);
     }
 
     public function poem($collectionSlug, $slug)

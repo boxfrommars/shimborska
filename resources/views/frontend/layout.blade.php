@@ -20,13 +20,14 @@
         <link rel="stylesheet" type="text/css" href="/build/style.css" media="screen" />
     @endif
 
-    <title>{{ $page->title }}</title>
+    <title>Вислава Шимборская. {{ $page->title }}</title>
 </head>
 
 <body>
 
 <div id="wrap">
     <div id="bar">
+        <a href="/about" class="head-nav">о проекте</a>
         <h1><a href="/" class="pseudo-anchor">Вислава Шимборская</a>&nbsp;&nbsp;<span class="book-title">Стихотворения</span></h1>
     </div>
     <div id="main" class="remodal-bg">
@@ -41,10 +42,15 @@
         </div>
 
         <div class="page column">
+            <a href="/" class="content-link show-content-link">Содержание</a>
             @yield('content')
 
             <ul id="pager" class="cf">
-                <li class="first"><a href="/">Обложка</a><span class="shortkey">(ctrl + ↓)</span></li>
+                @if ('' === $page->slug)
+                    <li class="first" id="center-bottom-nav"><span>Обложка</span></li>
+                @else
+                    <li class="first"><a href="/">Обложка</a><span class="shortkey">(ctrl + ↓)</span></li>
+                @endif
 
                 <?php $pageNumber = $pagerFirstPageNumber; ?>
                 @foreach ($pager as $pagerPage)
@@ -63,7 +69,7 @@
             @yield('notes')
         </div>
 
-        <div id="content" title="Содержание" class="remodal" data-remodal-id="content-table">
+        <div id="content" title="Содержание" data-remodal-id="content-table">
             <div class="modal-header">
                 <button data-remodal-action="close" class="remodal-close"></button>
             </div>

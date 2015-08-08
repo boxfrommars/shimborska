@@ -1,4 +1,12 @@
+window.REMODAL_GLOBALS = {
+  DEFAULTS: {
+    hashTracking: false
+  }
+};
+
 $(document).ready(function () {
+
+  var contentTable = $('[data-remodal-id="content-table"]').remodal({ hashTracking: false });
 
   /* добавляем подсказки для шорткеев в пейджере */
   $('#center-bottom-nav').prev().not('.first').append('<span class="shortkey">(ctrl + ←)</span>');
@@ -17,7 +25,11 @@ $(document).ready(function () {
 
   // содержание
   $(document).bind('keydown', 'ctrl+up', function () {
-    location.href = '#content';
+    contentTable.open();
+  });
+  $('.show-content-link').on('click', function (e) {
+    e.preventDefault();
+    contentTable.open();
   });
 
   // вперёд
@@ -28,7 +40,6 @@ $(document).ready(function () {
 
   delete Hammer.defaults.cssProps.userSelect;
 
-  var contentTable = $('[data-remodal-id="content-table"]').remodal();
   var hammertime = new Hammer($('body').get(0));
 
   hammertime.on('swipe', function(e) {
@@ -39,12 +50,5 @@ $(document).ready(function () {
         contentTable.close();
       }
     }
-
   });
-
-  $(window).on('resize', function(){
-    console.log($(window).outerWidth(true));
-  })
-
-
 });

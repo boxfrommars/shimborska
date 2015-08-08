@@ -1,6 +1,9 @@
 @extends('frontend.layout')
 
 @section('content')
+
+    <h2>{{ $page->pageable->title }}</h2>
+
     {!! $page->pageable->content !!}
 
     <ul class="collection-content">
