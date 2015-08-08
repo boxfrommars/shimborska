@@ -38,17 +38,17 @@ $(document).ready(function () {
     location.href = href ? href : '/';
   });
 
-  delete Hammer.defaults.cssProps.userSelect;
+  // swipes support
+  //delete Hammer.defaults.cssProps.userSelect;
+  //var hammertime = new Hammer($('body').get(0));
+  //hammertime.on('swipe', function(e) {
+  //  if (e.pointerType === 'touch') {
+  //    if (contentTable.getState() === 'closed' || contentTable.getState() === 'closing') {
+  //      contentTable.open();
+  //    } else {
+  //      contentTable.close();
+  //    }
+  //  }
+  //});
 
-  var hammertime = new Hammer($('body').get(0));
-
-  hammertime.on('swipe', function(e) {
-    if (e.pointerType === 'touch') {
-      if (contentTable.getState() === 'closed' || contentTable.getState() === 'closing') {
-        contentTable.open();
-      } else {
-        contentTable.close();
-      }
-    }
-  });
 });

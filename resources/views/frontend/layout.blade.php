@@ -27,14 +27,31 @@
 
 <div id="wrap">
     <div id="bar">
-        <a href="/about" class="head-nav">о проекте</a>
-        <h1><a href="/" class="pseudo-anchor">Вислава Шимборская</a>&nbsp;&nbsp;<span class="book-title">Стихотворения</span></h1>
+        @if ('about' === $page->slug)
+            <span class="head-nav">о проекте</span>
+        @else
+            <a href="/about" class="head-nav">о проекте</a>
+        @endif
+
+        <h1>
+            @if ('' === $page->slug)
+                <span class="pseudo-anchor">Вислава Шимборская</span>
+            @else
+                <a href="/" class="pseudo-anchor">Вислава Шимборская</a>
+            @endif
+            &nbsp;&nbsp;<span class="book-title">Стихотворения</span>
+        </h1>
     </div>
     <div id="main" class="remodal-bg">
         <div class="images column">
             <ul id="navigation">
                 <li><a href="#content-table" class="show-content-link">Содержание</a></li>
-                <li><a href="/author">Об авторе</a></li>
+
+                @if ('author' === $page->slug)
+                    <li><span>Об авторе</span></li>
+                @else
+                    <li><a href="/author">Об авторе</a></li>
+                @endif
             </ul>
             <div class="images-bar">
                 @yield('images')
@@ -113,6 +130,16 @@
 
 <script src="/build/script.js"></script>
 @endif
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36213345-2', 'auto');
+    ga('send', 'pageview');
+</script>
 
 </body>
 </html>

@@ -13,14 +13,22 @@
 
 Route::get('/', ['as' => 'main', 'uses' => 'MainController@main']);
 Route::get('about', ['as' => 'about', 'uses' => 'MainController@about']);
+Route::get('author', ['as' => 'about', 'uses' => 'MainController@author']);
 
-Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () {
+Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('collection', 'CollectionController');
     Route::resource('collection.poem', 'PoemController');
     Route::resource('page', 'PageController');
 });
 
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
+
+// Authentication routes...
+Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
+    Route::get('login', 'AuthController@getLogin');
+    Route::post('login', 'AuthController@postLogin');
+    Route::get('logout', 'AuthController@getLogout');
+});
 
 
 Route::get('/{collectionSlug}/{poemSlug}', ['as' => 'poem', 'uses' => 'MainController@poem']);

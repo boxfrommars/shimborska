@@ -536,8 +536,14 @@ ul.classic,
     font-family: Verdana, "Bitstream Vera Sans", "DejaVu Sans", Tahoma, Geneva, Arial, sans-serif;
     font-size: .8em;
 }
+.head-nav {
+    display: none;
+}
 
 @media (min-width: 768px) {
+    .head-nav {
+        display: block;
+    }
     .content-link {
         display: none;
     }

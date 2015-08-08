@@ -2412,12 +2412,6 @@ class PoemSeeder extends Seeder
                         <p class="foot-note">Перевод Натальи Астафьевой</p>
                     </div>
                     ',
-                ],  [
-                    'slug' => '',
-                    'title' => '',
-                    'content' => '',
-                    'images' => '',
-                    'notes' => '',
                 ],
             ]
         ], [

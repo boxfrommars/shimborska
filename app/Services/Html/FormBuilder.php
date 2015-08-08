@@ -17,6 +17,18 @@ class FormBuilder extends \Collective\Html\FormBuilder
         return $this->field($title, $name, $control, $help);
     }
 
+    public function passwordField($title, $name, $options = array(), $help = '')
+    {
+        $control = $this->password($name, $this->setDefaultOptions($options));
+        return $this->field($title, $name, $control, $help);
+    }
+
+    public function checkboxField($title, $name, $value = 1, $checked = null, $options = [])
+    {
+        $control = '<div class="checkbox"><label>' . $this->checkbox($name, $value, $checked, $options) . '</label></div>';
+        return $this->field($title, $name, $control, $options);
+    }
+
     public function textareaField($title, $name, $value = null, $options = array(), $help = '')
     {
         $control = $this->textarea($name, $value, $this->setDefaultOptions($options));

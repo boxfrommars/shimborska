@@ -27,6 +27,16 @@ class MainController extends Controller
         return $this->view('frontend.about', $page);
     }
 
+    public function author()
+    {
+        $page = new Page([
+            'title' => 'Об авторе',
+            'slug' => 'author'
+        ]);
+
+        return $this->view('frontend.about', $page);
+    }
+
     public function poem($collectionSlug, $slug)
     {
         $page = Page::whereSlug($slug)->whereNotNull('parent_id')->first();
